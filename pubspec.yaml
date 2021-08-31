@@ -1,0 +1,23 @@
+name: phatima
+description: A new Flutter project.
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  flutter_modular: ^3.4.1+1
+  rxdart: ^0.27.1
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_modular_test: ^1.0.3
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
