@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "654765421235",
+    "project_id": "phatima-5c861",
+    "storage_bucket": "phatima-5c861.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654765421235:android:66ae0963b883a0c26b36c6",
+        "android_client_info": {
+          "package_name": "com.ergito.phatima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654765421235-p5hmecfaet0kefn6fqr2sanggbis5t1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ergito.phatima",
+            "certificate_hash": "be620aad36c70acce81e3a55c02b1de600941c92"
+          }
+        },
+        {
+          "client_id": "654765421235-dvv397od2ulfcr3kb2gh1r859q2usm47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALZx0P1LbLovY8d6xX3MBzmpfMmbpUBlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654765421235-dvv397od2ulfcr3kb2gh1r859q2usm47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
