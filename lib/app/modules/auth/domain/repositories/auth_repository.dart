@@ -4,7 +4,7 @@ import '../../../../core/error/failures.dart';
 import '../entities/logged_user.dart';
 
 abstract class IAuthRepository {
-  Future<Either<Failure, LoggedUser>> login();
-  Future<Either<Failure, LoggedUser>> logout();
+  Future<Either<Failure, LoggedUser>> loginWithGoogle();
   Either<Failure, LoggedUser> getLoggedUser();
+  Future<Either<Failure, Unit>> logout();
 }
