@@ -6,10 +6,10 @@ class LoggedUserModel extends LoggedUser {
   const LoggedUserModel({
     required String displayName,
     required String avatar,
-    required String phone,
+    String? phone,
     required String email,
-    required String address,
-    required double ballance,
+    String? address,
+    double? ballance,
     required DateTime createdAt,
   }) : super(
             displayName: displayName,
