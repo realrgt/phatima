@@ -32,7 +32,6 @@ class AuthFirebaseImpl implements IAuthDataSource {
 
   @override
   Future<void> logout() async {
-    // TODO: implement logout
-    throw UnimplementedError();
+    return await firebaseAuth.signOut();
   }
 }
