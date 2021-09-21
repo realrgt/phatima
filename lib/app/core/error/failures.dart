@@ -7,3 +7,7 @@ class Failure extends Equatable {
   @override
   List<Object?> get props => [message];
 }
+
+class ServerFailure extends Failure {}
+
+class LoggedUserFailure extends Failure {}
