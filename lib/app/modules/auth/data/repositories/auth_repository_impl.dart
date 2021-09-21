@@ -15,8 +15,8 @@ class AuthRepositoryImpl implements IAuthRepository {
     try {
       final user = await authDataSource.getLoggedUser();
       return Right(user);
-    } on ServerException {
-      return Left(ServerFailure());
+    } on LoggedUserException {
+      return Left(LoggedUserFailure());
     }
   }
 

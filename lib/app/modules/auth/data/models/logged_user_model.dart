@@ -4,16 +4,18 @@ import '../../domain/entities/logged_user.dart';
 
 class LoggedUserModel extends LoggedUser {
   const LoggedUserModel({
+    required String uid,
     required String displayName,
-    required String avatar,
+    required String photoURL,
     String? phone,
     required String email,
     String? address,
     double? ballance,
     required DateTime createdAt,
   }) : super(
+            uid: uid,
             displayName: displayName,
-            avatar: avatar,
+            photoURL: photoURL,
             phone: phone,
             email: email,
             address: address,
@@ -22,8 +24,9 @@ class LoggedUserModel extends LoggedUser {
 
   factory LoggedUserModel.fromMap(Map<String, dynamic> map) {
     return LoggedUserModel(
+      uid: map['uid'],
       displayName: map['displayName'],
-      avatar: map['avatar'],
+      photoURL: map['photoURL'],
       phone: map['phone'],
       email: map['email'],
       address: map['address'],
@@ -35,7 +38,7 @@ class LoggedUserModel extends LoggedUser {
   Map<String, dynamic> toMap() {
     return {
       'displayName': displayName,
-      'avatar': avatar,
+      'photoURL': photoURL,
       'phone': phone,
       'email': email,
       'address': address,
