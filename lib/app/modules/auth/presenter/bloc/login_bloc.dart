@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../../../../core/blocs/bloc_base.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/util/no_params.dart';
 import '../../domain/entities/logged_user.dart';
@@ -11,11 +12,6 @@ import '../../domain/usecases/login_with_google.dart';
 import '../../domain/usecases/logout.dart';
 import 'login_event.dart';
 import 'login_state.dart';
-
-abstract class BloC<Event, State> {
-  Stream<State> mapEventToState(Event event);
-  void dispose();
-}
 
 class LoginBloc implements BloC<LoginEvent, LoginState> {
   final GetLoggedUser _getLoggedUser;
