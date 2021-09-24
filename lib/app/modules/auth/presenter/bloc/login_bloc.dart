@@ -25,12 +25,12 @@ class LoginBloc implements BloC<LoginEvent, LoginState> {
   );
 
   final _subject = BehaviorSubject<LoginEvent>();
-  StreamSink<LoginEvent> get event => _subject.sink;
-  Stream<LoginState> get state => _subject.switchMap(mapEventToState);
+  StreamSink<LoginEvent> get sink => _subject.sink;
+  Stream<LoginState> get stream => _subject.switchMap(mapEventToState);
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    if (event is AuthenticateUser) {
+    if (event is SignUserIn) {
       yield LoginInitial();
       yield LoginLoading();
       final failureOrUser = await _loginWithGoogle(NoParams());
@@ -40,7 +40,7 @@ class LoginBloc implements BloC<LoginEvent, LoginState> {
       yield LoginLoading();
       final failureOrUnit = await _logout(NoParams());
       yield failureOrUnit.fold(
-        (failure) => LoginError(message: failure.message),
+        (failure) => LoginError(message: 'AUTHENTICATION ERROR'),
         (unit) => LoginLoaded(user: null),
       );
     } else if (event is GetCurrentUser) {

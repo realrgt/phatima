@@ -1,6 +1,6 @@
 abstract class LoginEvent {}
 
-class AuthenticateUser extends LoginEvent {}
+class SignUserIn extends LoginEvent {}
 
 class SignUserOut extends LoginEvent {}
 

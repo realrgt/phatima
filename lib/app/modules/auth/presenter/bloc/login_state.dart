@@ -1,4 +1,4 @@
-import 'package:phatima/app/modules/auth/domain/entities/logged_user.dart';
+import '../../domain/entities/logged_user.dart';
 
 abstract class LoginState {}
 
