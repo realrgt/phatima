@@ -7,22 +7,15 @@ import '../../../../core/blocs/bloc_base.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/util/no_params.dart';
 import '../../domain/entities/logged_user.dart';
-import '../../domain/usecases/get_logged_user.dart';
 import '../../domain/usecases/login_with_google.dart';
-import '../../domain/usecases/logout.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
 class LoginBloc implements BloC<LoginEvent, LoginState> {
-  final GetLoggedUser _getLoggedUser;
   final LoginWithGoogle _loginWithGoogle;
-  final Logout _logout;
 
-  LoginBloc(
-    this._getLoggedUser,
-    this._loginWithGoogle,
-    this._logout,
-  );
+  LoginBloc({required LoginWithGoogle loginWithGoogle})
+      : _loginWithGoogle = loginWithGoogle;
 
   final _subject = BehaviorSubject<LoginEvent>();
   StreamSink<LoginEvent> get sink => _subject.sink;
@@ -35,25 +28,7 @@ class LoginBloc implements BloC<LoginEvent, LoginState> {
       yield LoginLoading();
       final failureOrUser = await _loginWithGoogle(NoParams());
       yield* _eitherLoadedOrErrorState(failureOrUser);
-    } else if (event is SignUserOut) {
-      yield LoginInitial();
-      yield LoginLoading();
-      final failureOrUnit = await _logout(NoParams());
-      yield failureOrUnit.fold(
-        (failure) => LoginError(message: 'AUTHENTICATION ERROR'),
-        (unit) => LoginLoaded(user: null),
-      );
-    } else if (event is GetCurrentUser) {
-      yield LoginInitial();
-      yield LoginLoading();
-      final failureOrUser = await _getLoggedUser(NoParams());
-      yield* _eitherLoadedOrErrorState(failureOrUser);
     }
-  }
-
-  @override
-  void dispose() {
-    _subject.close();
   }
 
   Stream<LoginState> _eitherLoadedOrErrorState(
@@ -63,5 +38,10 @@ class LoginBloc implements BloC<LoginEvent, LoginState> {
       (failure) => LoginError(message: failure.message),
       (loggedUser) => LoginLoaded(user: loggedUser),
     );
+  }
+
+  @override
+  void dispose() {
+    _subject.close();
   }
 }

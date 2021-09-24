@@ -9,7 +9,7 @@ class AuthModule extends Module {
   @override
   final List<Bind> binds = [
     // * blocs
-    Bind.lazySingleton((i) => LoginBloc(i(), i(), i())),
+    Bind.lazySingleton((i) => LoginBloc(loginWithGoogle: i())),
     // * usecases
     Bind.lazySingleton<IUsecase>((i) => LoginWithGoogle(authRepository: i())),
   ];
