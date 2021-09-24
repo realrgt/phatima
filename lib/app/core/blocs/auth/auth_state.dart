@@ -12,19 +12,15 @@ class Uninitialized extends AuthState {}
 
 class Authenticated extends AuthState {
   final LoggedUser user;
-
-  const Authenticated({required this.user});
+  const Authenticated({required this.user}) : super();
 
   @override
   List<Object> get props => [user];
-
-  @override
-  String toString() => 'Authenticated { user: $user }';
 }
 
 class Unauthenticated extends AuthState {}
 
 class AuthError extends AuthState {
   final String? message;
-  const AuthError({this.message});
+  const AuthError({this.message}) : super();
 }

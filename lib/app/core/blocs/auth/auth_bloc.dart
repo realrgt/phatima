@@ -15,8 +15,8 @@ class AuthBloc implements BloC<AuthEvent, AuthState> {
   AuthBloc(this._getLoggedUser, this._logout);
 
   final _subject = BehaviorSubject<AuthEvent>();
-  StreamSink<AuthEvent> get event => _subject.sink;
-  Stream<AuthState> get state => _subject.switchMap(mapEventToState);
+  StreamSink<AuthEvent> get sink => _subject.sink;
+  Stream<AuthState> get stream => _subject.switchMap(mapEventToState);
 
   @override
   Stream<AuthState> mapEventToState(
