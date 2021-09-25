@@ -16,15 +16,7 @@ class LoginPage extends StatelessWidget {
       builder: (context, snapshot) {
         final state = snapshot.data;
 
-        if (state is LoginInitial) {
-          return Center(
-            child: ElevatedButton.icon(
-              onPressed: () => _loginBloc.sink.add(SignUserIn()),
-              icon: const Icon(Icons.mail),
-              label: const Text('Login'),
-            ),
-          );
-        } else if (state is LoginLoading) {
+        if (state is LoginLoading) {
           return const LoadingWidget();
         } else if (state is LoginLoaded) {
           Modular.to.navigate('../home/');
@@ -34,7 +26,14 @@ class LoginPage extends StatelessWidget {
           );
         }
 
-        return const Center(child: Text('Unexpected'));
+        // defaults to LoginInitial
+        return Center(
+          child: ElevatedButton.icon(
+            onPressed: () => _loginBloc.sink.add(SignUserIn()),
+            icon: const Icon(Icons.mail),
+            label: const Text('Login'),
+          ),
+        );
       },
     );
   }
