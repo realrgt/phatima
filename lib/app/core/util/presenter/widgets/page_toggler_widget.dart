@@ -2,17 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../../../blocs/page_toggle/page_toggle_bloc.dart';
+
 class PageToggle extends StatelessWidget {
-  const PageToggle({Key? key}) : super(key: key);
+  PageToggle({Key? key}) : super(key: key);
+
+  final _pageToggleBloc = Modular.get<PageToggleBloc>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: RouterOutlet(),
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: 0,
-        onTap: (value) {},
-        items: [...menuItems],
+      bottomNavigationBar: StreamBuilder<int>(
+        initialData: homePageIndex,
+        stream: _pageToggleBloc.stream,
+        builder: (context, snapshot) {
+          final state = snapshot.data!;
+          return SalomonBottomBar(
+            currentIndex: state,
+            onTap: _pageToggleBloc.setIndex,
+            items: [...menuItems],
+          );
+        },
       ),
     );
   }
