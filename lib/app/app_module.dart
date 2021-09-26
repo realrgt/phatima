@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'core/blocs/auth/auth_bloc.dart';
 import 'core/usecase/usecase.dart';
+import 'core/util/presenter/widgets/page_toggler_widget.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/data/datasources/auth_datasource.dart';
 import 'modules/auth/data/datasources/auth_firebase_impl.dart';
@@ -32,7 +33,13 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute('/auth', module: AuthModule()),
-    ModuleRoute('/home', module: HomeModule()),
+    ChildRoute(
+      Modular.initialRoute,
+      child: (_, __) => const PageToggle(),
+      children: [
+        ModuleRoute('/auth', module: AuthModule()),
+        ModuleRoute('/home', module: HomeModule()),
+      ],
+    )
   ];
 }
