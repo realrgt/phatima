@@ -1,7 +1,7 @@
-import '../../domain/entities/logged_user.dart';
+import '../models/logged_user_model.dart';
 
 abstract class IAuthDataSource {
-  Future<LoggedUser> loginWithGoogle();
-  Future<LoggedUser> getLoggedUser();
+  Future<LoggedUserModel> loginWithGoogle();
+  Future<LoggedUserModel> getLoggedUser();
   Future<void> logout();
 }

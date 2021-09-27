@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -8,6 +9,8 @@ import 'core/util/presenter/widgets/page_toggler_widget.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/data/datasources/auth_datasource.dart';
 import 'modules/auth/data/datasources/auth_firebase_impl.dart';
+import 'modules/auth/data/datasources/user_datasource.dart';
+import 'modules/auth/data/datasources/user_firestore_impl.dart';
 import 'modules/auth/data/repositories/auth_repository_impl.dart';
 import 'modules/auth/domain/repositories/auth_repository.dart';
 import 'modules/auth/domain/usecases/get_logged_user.dart';
@@ -28,12 +31,15 @@ class AppModule extends Module {
     Bind.lazySingleton<IUsecase>((i) => Logout(authRepository: i())),
     //* repositories
     Bind.lazySingleton<IAuthRepository>(
-        (i) => AuthRepositoryImpl(authDataSource: i())),
+        (i) => AuthRepositoryImpl(authDataSource: i(), userDataSource: i())),
     //* datasources
     Bind.lazySingleton<IAuthDataSource>(
         (i) => AuthFirebaseImpl(firebaseAuth: i())),
+    Bind.lazySingleton<IUserDataSource>(
+        (i) => UserFirestoreImpl(firestore: i())),
     //! external
     Bind.singleton((i) => FirebaseAuth.instance),
+    Bind.singleton((i) => FirebaseFirestore.instance),
   ];
 
   @override
