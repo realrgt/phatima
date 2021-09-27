@@ -7,6 +7,9 @@ class ProfileModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => const Scaffold()),
+    ChildRoute(
+      Modular.initialRoute,
+      child: (_, args) => const Center(child: Text('Profile')),
+    ),
   ];
 }
