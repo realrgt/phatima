@@ -5,10 +5,16 @@ import '../../../../core/error/failures.dart';
 import '../../domain/entities/logged_user.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_datasource.dart';
+import '../datasources/user_datasource.dart';
 
 class AuthRepositoryImpl implements IAuthRepository {
   final IAuthDataSource authDataSource;
-  AuthRepositoryImpl({required this.authDataSource});
+  final IUserDataSource userDataSource;
+
+  AuthRepositoryImpl({
+    required this.authDataSource,
+    required this.userDataSource,
+  });
 
   @override
   Future<Either<Failure, LoggedUser>> getLoggedUser() async {
@@ -24,6 +30,7 @@ class AuthRepositoryImpl implements IAuthRepository {
   Future<Either<Failure, LoggedUser>> loginWithGoogle() async {
     try {
       final user = await authDataSource.loginWithGoogle();
+      await userDataSource.createUserRecord(user);
       return Right(user);
     } on ServerException {
       return left(ServerFailure());
