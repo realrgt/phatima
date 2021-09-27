@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:phatima/app/modules/profile/domain/entities/user.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
@@ -12,11 +13,11 @@ class UpateUser implements IUsecase<Unit, UserUpdateParams> {
 
   @override
   Future<Either<Failure, Unit>> call(UserUpdateParams params) async {
-    return await _userRepository.updateUser(params.uid);
+    return await _userRepository.updateUser(params.user);
   }
 }
 
 class UserUpdateParams {
-  final String uid;
-  UserUpdateParams({required this.uid});
+  final User user;
+  UserUpdateParams({required this.user});
 }
