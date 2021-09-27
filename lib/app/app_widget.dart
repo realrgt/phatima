@@ -34,6 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
 
         return MaterialApp(
           title: 'Flutter Slidy',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(primarySwatch: Colors.blue),
           initialRoute: state is Authenticated ? 'home/' : 'auth/',
         ).modular();
