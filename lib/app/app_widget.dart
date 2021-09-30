@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'core/domain/util/global_scaffold.dart';
 import 'core/presenter/blocs/auth/bloc.dart';
 import 'core/presenter/pages/splash_screen_page.dart';
 
@@ -33,6 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
         }
 
         return MaterialApp(
+          scaffoldMessengerKey: GlobalScaffold.instance.scaffoldMessengerKey,
           title: 'Flutter Slidy',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(primarySwatch: Colors.blue),

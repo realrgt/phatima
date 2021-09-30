@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
-import '../../../../core/blocs/bloc_base.dart';
-import '../../../../core/util/constants.dart';
+import '../../../../core/domain/util/constants/messages.dart';
+import '../../../../core/presenter/blocs/bloc_base.dart';
 import '../../domain/usecases/get_user.dart';
 import '../../domain/usecases/update_user.dart';
 import 'bloc.dart';
@@ -38,7 +38,7 @@ class ProfileBloc extends BloC<ProfileEvent, ProfileState> {
   ) async* {
     yield ProfileInitial();
     yield ProfileLoading();
-    final failureOrUser = await _getUser(UserGetParams(uid: event.user!.uid));
+    final failureOrUser = await _getUser(UserGetParams(uid: event.userID!));
     yield failureOrUser.fold(
       (failure) => const ProfileError(message: profileUpdateErrorMessage),
       (user) => ProfileLoaded(user: user),

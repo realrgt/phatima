@@ -14,7 +14,7 @@ double get appHeight => MediaQuery.of(globalContext).size.height;
 
 /// app default padding
 EdgeInsetsGeometry get appPadding =>
-    const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
+    const EdgeInsets.symmetric(horizontal: 16, vertical: 10);
 
 /// app default margin
 EdgeInsetsGeometry get appMargin =>

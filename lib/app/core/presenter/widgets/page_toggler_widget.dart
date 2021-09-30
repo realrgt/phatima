@@ -12,6 +12,7 @@ class PageToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFE6EAF1),
       body: RouterOutlet(),
       bottomNavigationBar: StreamBuilder<int>(
         initialData: homePageIndex,
