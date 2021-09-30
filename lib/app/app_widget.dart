@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'core/blocs/auth/bloc.dart';
-import 'core/util/presenter/pages/splash_screen_page.dart';
+import 'core/presenter/blocs/auth/bloc.dart';
+import 'core/presenter/pages/splash_screen_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);

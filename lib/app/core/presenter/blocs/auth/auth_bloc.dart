@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
-import '../../../modules/auth/domain/usecases/get_logged_user.dart';
-import '../../../modules/auth/domain/usecases/logout.dart';
-import '../../util/no_params.dart';
+import '../../../../modules/auth/domain/usecases/get_logged_user.dart';
+import '../../../../modules/auth/domain/usecases/logout.dart';
+import '../../../domain/entities/params.dart';
 import '../bloc_base.dart';
 import 'bloc.dart';
 

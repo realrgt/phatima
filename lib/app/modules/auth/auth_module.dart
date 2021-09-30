@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../core/usecase/usecase.dart';
+import '../../core/domain/usecase/usecase.dart';
 import 'domain/usecases/login_with_google.dart';
 import 'presenter/bloc/login_bloc.dart';
 import 'presenter/pages/login_page.dart';

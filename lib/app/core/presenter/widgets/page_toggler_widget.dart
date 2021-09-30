@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../../blocs/page_toggle/page_toggle_bloc.dart';
+import '../blocs/page_toggle/page_toggle_bloc.dart';
 
 class PageToggle extends StatelessWidget {
   PageToggle({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:phatima/app/modules/profile/domain/entities/user.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../../../core/usecase/usecase.dart';
+import '../../../../core/domain/error/failures.dart';
+import '../../../../core/domain/usecase/usecase.dart';
+import '../entities/user.dart';
 import '../repositories/user_repository.dart';
 
 class UpdateUser implements IUsecase<Unit, UserUpdateParams> {

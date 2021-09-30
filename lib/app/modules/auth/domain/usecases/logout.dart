@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../../../core/usecase/usecase.dart';
-import '../../../../core/util/no_params.dart';
+import '../../../../core/domain/entities/params.dart';
+import '../../../../core/domain/error/failures.dart';
+import '../../../../core/domain/usecase/usecase.dart';
 import '../repositories/auth_repository.dart';
 
 class Logout implements IUsecase<Unit, NoParams> {

@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'core/blocs/auth/auth_bloc.dart';
-import 'core/blocs/page_toggle/page_toggle_bloc.dart';
-import 'core/usecase/usecase.dart';
-import 'core/util/presenter/widgets/page_toggler_widget.dart';
+import 'core/domain/usecase/usecase.dart';
+import 'core/presenter/blocs/auth/auth_bloc.dart';
+import 'core/presenter/blocs/page_toggle/page_toggle_bloc.dart';
+import 'core/presenter/widgets/page_toggler_widget.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/data/datasources/auth_datasource.dart';
 import 'modules/auth/data/datasources/auth_firebase_impl.dart';

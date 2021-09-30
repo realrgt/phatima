@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../core/error/exceptions.dart';
-import '../../../../core/util/constants.dart';
+import '../../../../core/domain/error/exceptions.dart';
+import '../../../../core/domain/util/constants/firebase.dart';
 import '../models/user_model.dart';
 import 'user_datasource.dart';
 
