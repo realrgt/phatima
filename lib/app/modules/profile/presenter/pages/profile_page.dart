@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/data/util/constants/firebase.dart';
 import '../../../auth/presenter/widgets/widgets.dart';
 import '../bloc/bloc.dart';
 import '../widgets/profile_display_widget.dart';
@@ -18,8 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    _profileBloc.sink
-        .add(const EnteredProfileTab(uid: 'pJHtcgbTvaYLaTDAWautgZixZRU2'));
+    _profileBloc.sink.add(EnteredProfileTab(uid: userId));
     super.initState();
   }
 
