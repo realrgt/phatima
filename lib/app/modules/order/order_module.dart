@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'presenter/pages/order_page.dart';
 
 class OrderModule extends Module {
   @override
@@ -7,9 +8,6 @@ class OrderModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(
-      Modular.initialRoute,
-      child: (_, args) => const Center(child: Text('Orders')),
-    ),
+    ChildRoute(Modular.initialRoute, child: (_, args) => const OrderPage()),
   ];
 }
