@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../core/util/constants.dart';
+import '../../../../core/domain/util/constants/firebase.dart';
 import '../models/logged_user_model.dart';
 import 'user_datasource.dart';
 

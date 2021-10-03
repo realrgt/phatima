@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'core/blocs/auth/bloc.dart';
-import 'core/util/presenter/pages/splash_screen_page.dart';
+import 'core/domain/util/global_scaffold.dart';
+import 'core/presenter/blocs/auth/bloc.dart';
+import 'core/presenter/pages/splash_screen_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -33,7 +34,9 @@ class _AppWidgetState extends State<AppWidget> {
         }
 
         return MaterialApp(
+          scaffoldMessengerKey: GlobalScaffold.instance.scaffoldMessengerKey,
           title: 'Flutter Slidy',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(primarySwatch: Colors.blue),
           initialRoute: state is Authenticated ? 'home/' : 'auth/',
         ).modular();

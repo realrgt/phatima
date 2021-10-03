@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:phatima/app/core/domain/error/exceptions.dart';
 
-import '../../../../core/error/exceptions.dart';
 import '../models/logged_user_model.dart';
 import 'auth_datasource.dart';
 

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'presenter/pages/finance_page.dart';
 
 class FinanceModule extends Module {
   @override
@@ -7,9 +8,6 @@ class FinanceModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(
-      Modular.initialRoute,
-      child: (_, args) => const Center(child: Text('Finances')),
-    ),
+    ChildRoute(Modular.initialRoute, child: (_, args) => const FinancePage()),
   ];
 }

@@ -37,6 +37,7 @@ class LoggedUserModel extends LoggedUser {
 
   Map<String, dynamic> toMap() {
     return {
+      'uid': uid,
       'displayName': displayName,
       'photoURL': photoURL,
       'phone': phone,
