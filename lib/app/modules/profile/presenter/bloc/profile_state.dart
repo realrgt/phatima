@@ -19,8 +19,6 @@ class ProfileLoaded extends ProfileState {
   const ProfileLoaded({required User user}) : super(user: user);
 }
 
-class ProfileSubmitted extends ProfileState {}
-
 class ProfileError extends ProfileState {
   const ProfileError({required String message}) : super(errorMsg: message);
 }

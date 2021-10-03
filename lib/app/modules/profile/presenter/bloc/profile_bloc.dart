@@ -53,7 +53,7 @@ class ProfileBloc extends BloC<ProfileEvent, ProfileState> {
     final failureOrUnit = await _upateUser(UserUpdateParams(user: event.user!));
     yield failureOrUnit.fold(
       (failure) => const ProfileError(message: profileLoadErrorMessage),
-      (unit) => ProfileSubmitted(),
+      (unit) => ProfileLoaded(user: event.user!),
     );
   }
 
