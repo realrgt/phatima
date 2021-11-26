@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'core/domain/usecase/usecase.dart';
 import 'core/presenter/blocs/auth/auth_bloc.dart';
 import 'core/presenter/blocs/page_toggle/page_toggle_bloc.dart';
+import 'core/presenter/blocs/theme/theme_bloc.dart';
 import 'core/presenter/widgets/page_toggler_widget.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/data/datasources/auth_datasource.dart';
@@ -26,6 +27,7 @@ class AppModule extends Module {
     //* bloc
     Bind.singleton((i) => AuthBloc(i(), i())),
     Bind.singleton((i) => PageToggleBloc()),
+    Bind.singleton((i) => ThemeBloc()),
     //* use cases
     Bind.lazySingleton<IUsecase>((i) => GetLoggedUser(authRepository: i())),
     Bind.lazySingleton<IUsecase>((i) => Logout(authRepository: i())),

@@ -37,13 +37,13 @@ class ProfileSection extends StatelessWidget {
 
               _profileBloc.sink.add(UpdatedProfile(user: updatedUser));
             },
-            icon: const Icon(Icons.save, color: Color(0xFF130B1F)),
+            icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
           ),
         ),
         const SizedBox(height: 12),
         Text(
           user.uid,
-          style: const TextStyle(color: Colors.grey),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         const SizedBox(height: 20),
         CustomTextField(

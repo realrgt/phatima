@@ -12,27 +12,20 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 30.0),
-        const Text(
+        Text(
           'Profile',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-            fontSize: 24.0,
-          ),
+          style: Theme.of(context).textTheme.headline6,
         ),
         const SizedBox(height: 50.0),
         CircleAvatar(
           radius: 60.0,
           foregroundImage: NetworkImage(user.photoURL),
-          backgroundColor: Colors.grey,
+          backgroundColor: Theme.of(context).colorScheme.background,
         ),
         const SizedBox(height: 10.0),
         Text(
           user.email,
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 16.0,
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
       ],
     );
