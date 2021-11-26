@@ -21,14 +21,14 @@ class AppScaffold extends StatelessWidget {
     return Stack(
       children: <Widget>[
         //? inner [background] container
-        Container(color: const Color(0xFFE6EAF1)),
+        Container(color: Theme.of(context).colorScheme.background),
         //? middle [header] container
         Container(
           height: headerHeight,
           width: appWidth,
-          decoration: const BoxDecoration(
-            color: Color(0xFF130B1F),
-            borderRadius: BorderRadius.vertical(
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: const BorderRadius.vertical(
               bottom: Radius.circular(20.0),
             ),
           ),
@@ -40,14 +40,15 @@ class AppScaffold extends StatelessWidget {
           left: 0.0,
           right: 0.0,
           child: Container(
-              height: sectionHeight,
-              margin: const EdgeInsets.symmetric(horizontal: 20.0),
-              padding: appPadding,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              ),
-              child: sectionContent),
+            height: sectionHeight,
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: appPadding,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+            ),
+            child: sectionContent,
+          ),
         ),
       ],
     );

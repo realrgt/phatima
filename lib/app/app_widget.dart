@@ -3,7 +3,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'core/domain/util/global_scaffold.dart';
 import 'core/presenter/blocs/auth/bloc.dart';
+import 'core/presenter/blocs/theme/bloc.dart';
 import 'core/presenter/pages/splash_screen_page.dart';
+import 'core/presenter/theme/app_themes.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   final _authBloc = Modular.get<AuthBloc>();
+  final _themeBloc = Modular.get<ThemeBloc>();
 
   @override
   void initState() {
@@ -27,21 +30,29 @@ class _AppWidgetState extends State<AppWidget> {
       stream: _authBloc.stream,
       initialData: Uninitialized(),
       builder: (context, snapshot) {
-        final state = snapshot.data;
+        final authState = snapshot.data;
 
-        if (state is Uninitialized) {
-          return const SplashScreenPage();
-        }
+        if (authState is Uninitialized) return const SplashScreenPage();
 
-        return MaterialApp(
-          scaffoldMessengerKey: GlobalScaffold.instance.scaffoldMessengerKey,
-          title: 'Flutter Slidy',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(primarySwatch: Colors.blue),
-          initialRoute: state is Authenticated ? 'home/' : 'auth/',
-        ).modular();
+        return StreamBuilder<ThemeState>(
+          initialData: ThemeState(themeData: appThemeData[AppTheme.light]!),
+          stream: _themeBloc.state,
+          builder: (context, themeSnapshot) {
+            return renderMain(authState, themeSnapshot);
+          },
+        );
       },
     );
+  }
+
+  MaterialApp renderMain(AuthState? authState, AsyncSnapshot themeSnapshot) {
+    return MaterialApp(
+      scaffoldMessengerKey: GlobalScaffold.instance.scaffoldMessengerKey,
+      title: 'Flutter Slidy',
+      debugShowCheckedModeBanner: false,
+      theme: themeSnapshot.data.themeData,
+      initialRoute: authState is Authenticated ? 'home/' : 'auth/',
+    ).modular();
   }
 
   @override

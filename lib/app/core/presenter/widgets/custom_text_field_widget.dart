@@ -18,13 +18,16 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       initialValue: initialValue,
-      cursorColor: const Color(0xFF130B1F),
+      cursorColor: Theme.of(context).primaryColor,
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon,
         border: const OutlineInputBorder(),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF130B1F), width: 2.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 2.0,
+          ),
         ),
       ),
       onChanged: onChanged,
