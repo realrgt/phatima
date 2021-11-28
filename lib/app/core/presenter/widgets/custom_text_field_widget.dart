@@ -7,16 +7,19 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     this.onChanged,
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   final String? initialValue;
   final String hintText;
   final Icon prefixIcon;
   final ValueChanged<String>? onChanged;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       initialValue: initialValue,
       cursorColor: Theme.of(context).primaryColor,
       decoration: InputDecoration(

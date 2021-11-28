@@ -8,7 +8,7 @@ abstract class ProfileEvent extends Equatable {
   const ProfileEvent({this.userID, this.user});
 
   @override
-  List<Object?> get props => [user];
+  List<Object?> get props => [user, userID];
 }
 
 class EnteredProfileTab extends ProfileEvent {

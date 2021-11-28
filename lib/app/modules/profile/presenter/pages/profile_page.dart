@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/data/util/constants/firebase.dart';
-import '../../../auth/presenter/widgets/widgets.dart';
+import '../../../../core/presenter/widgets/widgets.dart';
 import '../bloc/bloc.dart';
 import '../widgets/profile_display_widget.dart';
 
@@ -24,23 +24,21 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return SafeArea(
-      child: StreamBuilder<ProfileState>(
-        stream: _profileBloc.stream,
-        initialData: ProfileInitial(),
-        builder: (context, snapshot) {
-          final state = snapshot.data;
+    return StreamBuilder<ProfileState>(
+      stream: _profileBloc.stream,
+      initialData: ProfileInitial(),
+      builder: (context, snapshot) {
+        final state = snapshot.data;
 
-          if (state is ProfileLoading) {
-            return const LoadingWidget();
-          } else if (state is ProfileLoaded) {
-            return ProfileDisplay(user: state.user!);
-          } else if (state is ProfileError) {
-            return Center(child: Text(state.errorMsg!));
-          }
-          return const Center(child: Text('Unnexpected Error'));
-        },
-      ),
+        if (state is ProfileLoading) {
+          return const LoadingWidget();
+        } else if (state is ProfileLoaded) {
+          return ProfileDisplay(user: state.user!);
+        } else if (state is ProfileError) {
+          return Center(child: Text(state.errorMsg!));
+        }
+        return const Center(child: Text('Unnexpected Error'));
+      },
     );
   }
 
