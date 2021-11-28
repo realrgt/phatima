@@ -18,39 +18,41 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        //? inner [background] container
-        Container(color: Theme.of(context).colorScheme.background),
-        //? middle [header] container
-        Container(
-          height: headerHeight,
-          width: appWidth,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(20.0),
-            ),
-          ),
-          child: headerContent,
-        ),
-        //? upper [body] container
-        Positioned(
-          bottom: 0.0,
-          left: 0.0,
-          right: 0.0,
-          child: Container(
-            height: sectionHeight,
-            margin: const EdgeInsets.symmetric(horizontal: 20.0),
-            padding: appPadding,
+    return SafeArea(
+      child: Stack(
+        children: <Widget>[
+          //? inner [background] container
+          Container(color: Theme.of(context).colorScheme.background),
+          //? middle [header] container
+          Container(
+            height: headerHeight,
+            width: appWidth,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+              color: Theme.of(context).primaryColor,
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(20.0),
+              ),
             ),
-            child: sectionContent,
+            child: headerContent,
           ),
-        ),
-      ],
+          //? upper [body] container
+          Positioned(
+            bottom: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: Container(
+              height: sectionHeight,
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: appPadding,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+              ),
+              child: sectionContent,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -38,7 +38,7 @@ class WalletBloc implements BloC<WalletEvent, WalletState> {
         await _getAccountBallance(BallanceParams(uid: event.uid));
     yield failureOrBallance.fold(
       (failure) => const WalletError(message: ballanceLoadErrorMessage),
-      (balance) => WalletLoaded(value: event.value!),
+      (balance) => WalletLoaded(value: balance),
     );
   }
 

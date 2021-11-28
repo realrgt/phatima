@@ -25,7 +25,7 @@ class UserModel extends User {
     return UserModel(
       uid: map['uid'],
       displayName: map['displayName'],
-      ballance: map['ballance'],
+      ballance: (map['ballance'] as num).toDouble(),
     );
   }
 
