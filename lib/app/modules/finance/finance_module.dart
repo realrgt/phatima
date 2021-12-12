@@ -1,4 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:phatima/app/modules/finance/data/drivers/payment_gateway.dart';
+import 'package:phatima/app/modules/finance/data/drivers/payment_gateway_impl.dart';
 
 import '../../core/domain/usecase/usecase.dart';
 import '../../core/presenter/blocs/bloc_base.dart';
@@ -27,12 +29,14 @@ class FinanceModule extends Module {
     ),
     //* repositories
     Bind.lazySingleton<IWalletRepository>(
-      (i) => WalletRepositoryImpl(walletDataSource: i()),
+      (i) => WalletRepositoryImpl(walletDataSource: i(), paymentGateway: i()),
     ),
     //* datasources
     Bind.lazySingleton<IWalletDataSource>(
       (i) => WalletDataSourceFirestoreImpl(firestore: i()),
     ),
+    //* drivers
+    Bind.lazySingleton<IPaymentGateway>((i) => PaymentGatewayImpl()),
   ];
 
   @override

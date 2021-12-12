@@ -1,3 +1,6 @@
+# Mpesa Keys
+/lib/app/core/data/util/constants/mpesa.dart
+
 # Miscellaneous
 *.class
 *.log
