@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:phatima/app/core/data/util/phone_number_format.dart';
 import 'package:phatima/app/modules/finance/data/drivers/payment_gateway.dart';
 import 'package:phatima/app/modules/finance/data/drivers/payment_gateway_impl.dart';
 
@@ -36,7 +37,10 @@ class FinanceModule extends Module {
       (i) => WalletDataSourceFirestoreImpl(firestore: i()),
     ),
     //* drivers
-    Bind.lazySingleton<IPaymentGateway>((i) => PaymentGatewayImpl()),
+    Bind.lazySingleton<IPaymentGateway>(
+        (i) => PaymentGatewayImpl(phoneNumberFormat: i())),
+    //* util
+    Bind.lazySingleton<IPhoneNumberFormat>((i) => PhoneNumberFormatImpl()),
   ];
 
   @override

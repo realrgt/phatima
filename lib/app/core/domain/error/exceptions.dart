@@ -15,3 +15,9 @@ class PaymentException implements Exception {
 
   PaymentException({this.message});
 }
+
+class PhoneFormatException implements Exception {
+  final String? message;
+
+  PhoneFormatException({this.message});
+}
