@@ -11,3 +11,7 @@ class Failure extends Equatable {
 class ServerFailure extends Failure {}
 
 class LoggedUserFailure extends Failure {}
+
+class PaymentFailure extends Failure {}
+
+class PhoneFormatFailure extends Failure {}

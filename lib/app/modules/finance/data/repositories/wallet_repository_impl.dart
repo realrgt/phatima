@@ -4,13 +4,17 @@ import '../../../../core/domain/error/exceptions.dart';
 import '../../../../core/domain/error/failures.dart';
 import '../../domain/repositories/wallet_repository.dart';
 import '../datasources/wallet_datasource.dart';
+import '../drivers/payment_gateway.dart';
 
 class WalletRepositoryImpl implements IWalletRepository {
   final IWalletDataSource _walletDataSource;
+  final IPaymentGateway _paymentGateway;
 
   WalletRepositoryImpl({
     required IWalletDataSource walletDataSource,
-  }) : _walletDataSource = walletDataSource;
+    required IPaymentGateway paymentGateway,
+  })  : _walletDataSource = walletDataSource,
+        _paymentGateway = paymentGateway;
 
   @override
   Future<Either<Failure, double>> getAccountBallance(String uid) async {
@@ -27,13 +31,20 @@ class WalletRepositoryImpl implements IWalletRepository {
   Future<Either<Failure, Unit>> rechargeAccount(
     String uid,
     double value,
+    String phone,
   ) async {
-    try {
-      await _walletDataSource.rechargeAccount(uid, value);
+    bool isPaymentDone = await _paymentGateway.performC2BPayment(value, phone);
 
-      return const Right(unit);
-    } on ServerException {
-      return Left(ServerFailure());
+    if (isPaymentDone) {
+      try {
+        await _walletDataSource.rechargeAccount(uid, value);
+
+        return const Right(unit);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(PaymentFailure());
     }
   }
 }

@@ -13,13 +13,18 @@ class RechargeAccount implements IUsecase<Unit, RechargeParams> {
 
   @override
   Future<Either<Failure, Unit>> call(RechargeParams params) async {
-    return await _walletRepository.rechargeAccount(params.uid, params.value);
+    return await _walletRepository.rechargeAccount(
+      params.uid,
+      params.value,
+      params.phone,
+    );
   }
 }
 
 class RechargeParams {
   final String uid;
   final double value;
+  final String phone;
 
-  RechargeParams({required this.uid, required this.value});
+  RechargeParams({required this.uid, required this.value, required this.phone});
 }
