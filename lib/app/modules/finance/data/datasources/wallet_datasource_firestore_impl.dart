@@ -24,6 +24,6 @@ class WalletDataSourceFirestoreImpl implements IWalletDataSource {
     await _firestore
         .collection(userCollection)
         .doc(uid)
-        .update({"ballance": value});
+        .update({"ballance": FieldValue.increment(value)});
   }
 }
