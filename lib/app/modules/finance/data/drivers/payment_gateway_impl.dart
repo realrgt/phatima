@@ -8,8 +8,6 @@ class PaymentGatewayImpl implements IPaymentGateway {
   Future<bool> performC2BPayment(double value, String phone) async {
     String token = MpesaConfig.getBearerToken(mpesaApiKey, mpesaPublicKey);
 
-    String apiHost = 'api.sandbox.vm.co.mz';
-
     PaymentRequest payload = PaymentRequest(
       inputTransactionReference: 'T12344C',
       inputCustomerMsisdn: phone,
@@ -18,7 +16,7 @@ class PaymentGatewayImpl implements IPaymentGateway {
       inputServiceProviderCode: mpesaBusinessShortCode,
     );
 
-    final result = await MpesaTransaction.c2b(token, apiHost, payload);
+    final result = await MpesaTransaction.c2b(token, mpesaApiHost, payload);
 
     if (result.statusCode == 201) return true;
     return false;

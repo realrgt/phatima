@@ -22,9 +22,9 @@ class WalletSection extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: IconButton(
-            onPressed: () {
-              _walletBloc.sink.add(PlaceMoney(uid: userId, value: _amount));
-            },
+            onPressed: () => _walletBloc.sink.add(
+              PlaceMoney(uid: userId, value: _amount, phone: phone),
+            ),
             icon: Icon(
               Icons.send_rounded,
               color: Theme.of(context).primaryColor,

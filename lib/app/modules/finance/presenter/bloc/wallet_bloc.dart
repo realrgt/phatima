@@ -46,7 +46,8 @@ class WalletBloc implements BloC<WalletEvent, WalletState> {
     yield WalletInitial();
     yield WalletLoading();
     final failureOrUnit = await _rechargeAccount(
-        RechargeParams(uid: event.uid, value: event.value!));
+      RechargeParams(uid: event.uid, value: event.value!, phone: event.phone!),
+    );
     yield failureOrUnit.fold(
       (failure) => const WalletError(message: ballanceUpadateErrorMessage),
       (unit) => WalletLoaded(value: event.value!),

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:phatima/app/modules/finance/data/drivers/payment_gateway.dart';
 
 import '../../../../core/domain/error/exceptions.dart';
 import '../../../../core/domain/error/failures.dart';
 import '../../domain/repositories/wallet_repository.dart';
 import '../datasources/wallet_datasource.dart';
+import '../drivers/payment_gateway.dart';
 
 class WalletRepositoryImpl implements IWalletRepository {
   final IWalletDataSource _walletDataSource;
@@ -31,9 +31,11 @@ class WalletRepositoryImpl implements IWalletRepository {
   Future<Either<Failure, Unit>> rechargeAccount(
     String uid,
     double value,
+    String phone,
   ) async {
-    const phone = "258847522988";
-    if (await _paymentGateway.performC2BPayment(value, phone)) {
+    bool isPaymentDone = await _paymentGateway.performC2BPayment(value, phone);
+
+    if (isPaymentDone) {
       try {
         await _walletDataSource.rechargeAccount(uid, value);
 
